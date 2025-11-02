@@ -650,6 +650,57 @@
 
     <!-- script File -->
     <script src="assist/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // منع الزر الأيمن
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                alert('❌ ممنوع استخدام الزر الأيمن في هذا الموقع!');
+            });
+
+            // منع اختصارات الكيبورد
+            document.addEventListener('keydown', function(e) {
+                // منع Ctrl+U
+                if (e.ctrlKey && e.key === 'u') {
+                    e.preventDefault();
+                    alert('❌ ممنوع عرض الكود المصدر!');
+                    return false;
+                }
+                
+                // منع F12
+                if (e.key === 'F12') {
+                    e.preventDefault();
+                    alert('❌ ممنوع فتح أدوات المطورين!');
+                    return false;
+                }
+                
+                // منع Ctrl+Shift+I
+                if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+                    e.preventDefault();
+                    alert('❌ ممنوع فتح أدوات المطورين!');
+                    return false;
+                }
+                
+                // منع Ctrl+Shift+C
+                if (e.ctrlKey && e.shiftKey && e.key === 'C') {
+                    e.preventDefault();
+                    alert('❌ ممنوع فتح أدوات المطورين!');
+                    return false;
+                }
+            });
+        });
+
+        // كشف إذا كانت أدوات المطورين مفتوحة
+        setInterval(function() {
+            const threshold = 160; // ارتفاع الشاشة عندما تفتح الأدوات
+            if (window.outerHeight - window.innerHeight > threshold || 
+                window.outerWidth - window.innerWidth > threshold) {
+                alert('أدوات المطورين مفتوحة!');
+                window.close(); // إغلاق النافذة
+            }
+        }, 1000);
+    </script>
 </body>
 
 </html>
+
