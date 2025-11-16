@@ -483,8 +483,8 @@
                 
                 // إنشاء جدول دراسي
                 const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday'];
-                const times = ['8-10', '10-12', '12-2', '2-4', '4-6'];
-                const dayNames = {'sunday': 'الأحد', 'monday': 'الإثنين', 'tuesday': 'الثلاثاء', 'wednesday': 'الأربعاء', 'thursday': 'الخميس'};
+                const times = ['8:30-11:30', '11;30-2:30', '2:30-5:30', '5:30-7:30', '7:30-10'];
+                const dayNames = {'saturday': 'السبت','sunday': 'الأحد', 'monday': 'الإثنين', 'tuesday': 'الثلاثاء', 'wednesday': 'الأربعاء', 'thursday': 'الخميس'};
                 
                 let tableHTML = `
                     <table class="timetable">
@@ -1408,4 +1408,5 @@
         completeTask = async function(taskId) {
             await originalCompleteTask(taskId);
             updateDashboardWithRealData();
+
         };
